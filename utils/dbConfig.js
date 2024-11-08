@@ -1,7 +1,11 @@
-import { neon } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
+import { drizzle } from 'drizzle-orm/node-postgres';
+import { Pool } from 'pg';
+require('dotenv').config();
 
-const sql = neon(
-  "postgresql://accounts:o1BGKu9iStzj@ep-misty-grass-a8go7rmj-pooler.eastus2.azure.neon.tech/Attendance-tracker?sslmode=require"
-);
-const db = drizzle({ client: sql });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+const db = drizzle(pool);
+
+export default  db ;

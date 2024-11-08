@@ -1,17 +1,10 @@
-import { defineConfig } from "drizzle-kit";
-import { Pool } from 'pg';  // Import pg to manage SSL settings
+require("dotenv").config();
 
-export default defineConfig({
-  dialect: "postgresql",
-  schema: "./utils/schema.js",
-  out: "./drizzle",
-  connection: {
-    host: "ep-misty-grass-a8go7rmj.eastus2.azure.neon.tech",
-    database: "Attendance-tracker",
-    user: "accounts",
-    password: "o1BGKu9iStzj",
-    ssl: {
-      rejectUnauthorized: false // This bypasses SSL certificate validation, required for some cloud services
-    }
-  },
-});
+export const schema = "./utils/schema.js";
+export const out = "./migrations";
+
+export const dbCredentials = {
+  url: `postgresql://Attendance-tracker_owner:x6dYsDC3ztQJ@ep-nameless-voice-a5rw992i.us-east-2.aws.neon.tech/Attendance-tracker?sslmode=require`, // Use environment variable for DB connection
+};
+
+export const dialect = "postgresql";
