@@ -7,6 +7,7 @@ import GlobalApi from "../_services/GlobalApi";
 import moment from "moment";
 import StatusList from "./_components/StatusList";
 import BarChartComponents from "./_components/BarChartCOmponents";
+import PieChartComponents from "./_components/PieChartComponents";
 
 function Dashboard() {
   const { setTheme } = useTheme();
@@ -64,6 +65,9 @@ function Dashboard() {
             attadanceList={attadanceList}
             totalPresentData={totalPresentData}
           />
+        </div>
+        <div>
+          <PieChartComponents attadanceList={attadanceList} />
         </div>
       </div>
     </div>

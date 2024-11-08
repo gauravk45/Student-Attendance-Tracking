@@ -5,6 +5,7 @@ import {
   BarChart,
   CartesianGrid,
   Legend,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -29,16 +30,19 @@ function BarChartComponents({ attadanceList, totalPresentData }) {
   };
 
   return (
-    <div>
-      <BarChart width={730} height={250} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="presentCount" fill="#8884d8" />
-        <Bar dataKey="absentCount" fill="#82ca9d" />
-      </BarChart>
+    <div className="p-5 border rounded-lg shadow-sm">
+      <h2 className="my-2 font-bold text-lg">Attendance</h2>
+      <ResponsiveContainer width={"100%"} height={300}>
+        <BarChart width={730} height={250} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="day" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="presentCount" name="Total Present" fill="#8884d8" />
+          <Bar dataKey="absentCount" name="Total Absent" fill="#82ca9d" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
